@@ -1,0 +1,58 @@
+ <!DOCTYPE html> 
+ <html ng-app="tnvd">
+ <head>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+ 	<meta charset="utf-8" /> 
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=device-dpi" /> 
+ 	<meta name="description" content="Taiwan Network Vulneralbility Database" /> 
+ 	<meta name="author" content="wooya@silic.org" /> 
+
+ 	<title>TNVD</title>
+ 	<script src="/static/js/angular.min.js"></script>
+ 	<script src="/static/js/angular-resource.min.js"></script>
+ 	<script src="/static/js/angular-route.min.js"></script>
+ 	<script src="/static/js/angular-bootstrap-ui.js"></script>
+ 	<script src="/static/js/boot.js"></script>
+ 	<link rel="stylesheet" href="/static/css/bootstrap.min.css"/> 
+ 	<link rel="stylesheet" href="/static/css/common.css"/> 
+ 	<!--[if lt IE 9]> 
+ 	<script src="static/js/html5shiv.js"></script>
+ 	<script src="static/js/respond.min.js"></script>
+ 	<![endif]--> 
+ 	[[range .moreStyles]]
+ 	<link rel="stylesheet" href="/static/css/[[.]]"/> 
+ 	[[end]]
+     [[range .moreScripts]]
+ 	<script src="/static/js/[[.]]"></script>
+ 	[[end]]
+ </head>
+ <body>
+ 	<div class="container">
+ 		<div class="row">
+ 			<div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-3" style="margin-top:200px">
+ 				[[if .flash.error]]
+ 				<div class="alert alert-danger">
+ 					[[.flash.error]]
+ 				</div>
+ 				[[end]]
+ 				<form method="post" action="[[urlfor "LoginController.Login"]]">
+ 					<div class="input-group">
+ 						<span class="input-group-addon">用户名</span>
+ 						<input type="text" name="username" class="form-control" /> 
+
+ 					</div>
+ 					<br/> 
+ 					<div class="input-group">
+ 						<span class="input-group-addon">密码</span>
+ 						<input type="text" name="password" class="form-control" /> 
+
+ 					</div>
+ 					<br/> 
+ 					<button type="submit" class="btn btn-success">登陆</button>
+ 				</form>
+ 			</div>
+ 		</div>
+ 	</div>
+ </body>
+ </html>

@@ -1,0 +1,73 @@
+ <!DOCTYPE html> 
+ <html ng-app="tnvd">
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+   <meta charset="utf-8" /> 
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=device-dpi" /> 
+   <meta name="description" content="Taiwan Network Vulneralbility Database" /> 
+   <meta name="author" content="wooya@silic.org" /> 
+
+   <title>TNVD</title>
+   <script src="/static/js/angular.min.js"></script>
+   <script src="/static/js/angular-resource.min.js"></script>
+   <script src="/static/js/angular-route.min.js"></script>
+   <script src="/static/js/angular-bootstrap-ui.js"></script>
+   <script src="/static/js/boot.js"></script>
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css"/> 
+   <link rel="stylesheet" href="/static/css/common.css"/> 
+   <!--[if lt IE 9]> 
+   <script src="static/js/html5shiv.js"></script>
+   <script src="static/js/respond.min.js"></script>
+   <![endif]--> 
+   [[range .moreStyles]]
+   <link rel="stylesheet" href="/static/css/[[.]]"/> 
+   [[end]]
+     [[range .moreScripts]]
+   <script src="/static/js/[[.]]"></script>
+   [[end]]
+ </head>
+ <body>
+
+   <nav class="navbar navbar-default" role="navigation" ng-controller="menubarCntl">
+     <div class="container-fluid">
+
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+           <span class="sr-only">{{menuBar.Brand}}</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="{{menuBar.BrandUrl}}">{{menuBar.Brand}}</a>
+       </div>
+
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav">
+           <li ng-repeat="sinmenu in menuBar.SinMenuBar">
+             <a href="{{sinmenu.url}}">{{sinmenu.title}}</a>
+           </li>
+           <li ng-repeat="mulmenu in menuBar.MulMenuBar" class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               {{mulmenu.title}}
+               <span class="caret"></span>
+             </a>
+             <ul class="dropdown-menu" role="menu">
+               <li ng-repeat="(title, url) in mulmenu.submenu">
+                 <a href="{{url}}">{{title}}</a>
+               </li>
+             </ul>
+           </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+           <li><a href="/admin/exit">退出</a></li>
+         </ul>
+       </div>
+     </div>
+   </nav>
+   [[.layoutContent]]
+   <div class="container">
+     <ng-view></ng-view>
+   </div>
+ </body>
+ </html>

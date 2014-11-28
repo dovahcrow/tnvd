@@ -1,0 +1,26 @@
+<div class="row">
+	<ul class="nav nav-pills nav-stacked" role="tablist">
+		<li ng-class="{active:active,nothing:nothing}">
+			<a href="#/dashboard">仪表盘</a>
+		</li>
+		<li ng-class="{active:active,nothing:nothing}">
+			<a href="#/serverStates">服务器状态</a>
+		</li>
+	</ul>
+	<br/>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div ng-repeat="(k,v) in sysStatus">
+				<div class="panel panel-default" >
+					<div class="panel-heading">
+						<h3 class="panel-title">{{k}}</h3>
+					</div>
+					<div class="panel-body" ng-repeat="(k2,v2) in v">
+						<div class="col-md-6" style="text-align:right">{{k2}}</div>
+						<div class="col-md-6" style="text-align:left">{{v2}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
